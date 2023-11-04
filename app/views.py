@@ -8,9 +8,10 @@ from django.db.models import Q
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
-
+@csrf_exempt
 def home(request):
     wishitem = 0
     product = Product.objects.filter()
