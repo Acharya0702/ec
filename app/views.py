@@ -8,7 +8,6 @@ from django.db.models import Q
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -24,7 +23,7 @@ def about(request):
     if request.user.is_authenticated:
         wishitem = len(Wishlist.objects.filter(user=request.user))
     return render(request, "app/about.html", locals())
-@csrf_exempt
+
 def contact(request):
     wishitem = 0
     if request.user.is_authenticated:
@@ -70,14 +69,13 @@ class ProductDetail(View):
         return render(request, "app/productdetail.html", locals())
     
 class CustomerRegistrationView(View):
-    @csrf_exempt
     def get(self, request):
         form = CustomerRegistrationForm()
         wishitem = 0
         if request.user.is_authenticated:
             wishitem = len(Wishlist.objects.filter(user=request.user))
         return render(request, 'app/registration.html', locals())
-    @csrf_exempt
+
     def post(self, request):
         form = CustomerRegistrationForm(request.POST)
         if form.is_valid():
@@ -89,14 +87,13 @@ class CustomerRegistrationView(View):
 
 @method_decorator(login_required, name='dispatch')
 class ProfileView(View):
-    @csrf_exempt
     def get(self, request):
         form = CustomerProfileForm()
         wishitem = 0
         if request.user.is_authenticated:
             wishitem = len(Wishlist.objects.filter(user=request.user))
         return render(request, 'app/profile.html', locals())
-        @csrf_exempt
+
     def post(self, request):
         form = CustomerProfileForm(request.POST)
         if form.is_valid():
@@ -124,7 +121,6 @@ def address(request):
 
 @method_decorator(login_required, name='dispatch')
 class UpdateAddress(View):
-    @csrf_exempt
     def get(self, request, pk):
         add = Customer.objects.get(pk=pk)
         form = CustomerProfileForm(instance=add)
@@ -132,7 +128,6 @@ class UpdateAddress(View):
         if request.user.is_authenticated:
             wishitem = len(Wishlist.objects.filter(user=request.user))
         return render(request, 'app/updateaddress.html', locals())
-    @csrf_exempt
     def post(self, request, pk):
         form = CustomerProfileForm(request.POST)
         if form.is_valid():
