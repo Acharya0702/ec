@@ -1,0 +1,87 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}
+Contact
+{% endblock %}
+{% block banner-slider %}
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="5000" id="firstbanner"></div>
+      <div class="carousel-item" data-bs-interval="4000" id="secondbanner"></div>
+      <div class="carousel-item" data-bs-interval="3000" id="thirdbanner"></div>
+      <div class="carousel-item" data-bs-interval="4000" id="fourthbanner"></div>
+      <div class="carousel-item" data-bs-interval="5000" id="fifthbanner"></div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+{% endblock banner-slider %}
+{% block main-content %}
+<div class="container">
+    <div class="row justify-content-evenly">
+        <h3 class="main_heading">Contact Us</h3>
+        <div class="contact col-sm-4" id="contact">
+            <div class="shadow my-3">
+                <div class="row justify-content-center">
+                    <div class="col-sm-2 text-center mx-0 my-auto">
+                        <i class="contact-icon fas fa-map-marker-alt" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-sm-9">
+                        <h5>Address</h5>
+                        <p>Plot N2-145 (Annex), IRC Village, Nayapalli, Bhubaneswar 751015</p>
+                    </div>
+                </div>
+            </div>
+            <div class="shadow my-3">
+                <div class="row justify-content-center">
+                    <div class="col-sm-2 text-center mx-0 my-auto">
+                        <i class="contact-icon far fa-envelope" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-sm-9">
+                        <h5>Gmail</h5>
+                        <p>info@7yardssolutions.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="shadow my-3">
+                <div class="row justify-content-center">
+                    <div class="col-sm-2 text-center mx-0 my-auto">
+                        <i class="contact-icon fas fa-phone-alt" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-sm-9">
+                        <h5>Mobile Number</h5>
+                        <p>+91 93373 19419</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact col-sm-6" id="contact">
+            <div class="shadow my-3">
+                <input type="text" class="form-control fw-bold" id="exampleFormControlInput" placeholder="Your Name">
+            </div>
+            <div class="shadow my-3">
+                <input type="email" class="form-control fw-bold" id="exampleFormControlInput1" placeholder="Email">
+            </div>
+            <div class="shadow my-3">
+                <input type="number" class="form-control fw-bold" id="exampleFormControlInput1" placeholder="Contact Number">
+            </div>
+            <div class="shadow my-3">
+                <textarea class="form-control fw-bold" id="exampleFormControlTextarea1" rows="4" placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-warning text-light">submit</button>
+        </div>
+    </div>
+    <iframe id="map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7483.9994037617025!2d85.8099086918374!3d20.300279474691582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909c55970eb61%3A0x81f12808cc25b847!2sJayadev%20Vihar%2C%20Bhubaneswar%2C%20Odisha!5e0!3m2!1sen!2sin!4v1698044933033!5m2!1sen!2sin"
+        allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+{% endblock main-content %}

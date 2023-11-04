@@ -1,0 +1,623 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}
+Home
+{% endblock %}
+{% block banner-slider %}
+<form role="search" action="/advancedsearch">
+  <div class="container slide-data">
+    <div class="row text-white text-center">
+      <div class="search_header">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Advanced Search
+      </div>
+      <div class="radio-data">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Budget">
+          <label class="form-check-label" for="flexRadioDefault1">By Budget</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Brand">
+          <label class="form-check-label" for="flexRadioDefault2">By Brand</label>
+        </div>
+      </div>
+      <div class="container select-box">
+        <select class="form-select" name="firstSelect" id="myselect1"></select>
+        <select class="form-select" name="secondSelect" id="myselect2"></select>
+        <button type="submit" class="btn text-white btn-know-more w-50">Search</button>
+      </div>
+    </div>
+  </div>
+</form>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="5000" id="firstbanner"></div>
+    <div class="carousel-item" data-bs-interval="4000" id="secondbanner"></div>
+    <div class="carousel-item" data-bs-interval="3000" id="thirdbanner"></div>
+    <div class="carousel-item" data-bs-interval="4000" id="fourthbanner"></div>
+    <div class="carousel-item" data-bs-interval="5000" id="fifthbanner"></div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+{% endblock banner-slider %}
+{% block main-content %}
+
+
+
+
+<!-- Car Start -->
+<div class="car_body shadow-sm">
+  <div class="slide-container1 swiper">
+    <div class="wow fadeInUp snt" data-wow-delay="0.1s">
+      <h4 class="display-7 mt-3">All Available Cars</h4>
+      <ul class="nav nav-pills car_brand" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="pills-suv-tab" data-bs-toggle="pill" data-bs-target="#pills-suv"
+            type="button" role="tab" aria-controls="pills-suv" aria-selected="true">SUV</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-hatchback-tab" data-bs-toggle="pill" data-bs-target="#pills-hatchback"
+            type="button" role="tab" aria-controls="pills-hatchback" aria-selected="false">Hatchback</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-sedan-tab" data-bs-toggle="pill" data-bs-target="#pills-sedan"
+            type="button" role="tab" aria-controls="pills-sedan" aria-selected="false">Sedan</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-muv-tab" data-bs-toggle="pill" data-bs-target="#pills-muv" type="button"
+            role="tab" aria-controls="pills-muv" aria-selected="false">MUV</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-luxury-tab" data-bs-toggle="pill" data-bs-target="#pills-luxury"
+            type="button" role="tab" aria-controls="pills-luxury" aria-selected="false">Luxury</button>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-suv" role="tabpanel" aria-labelledby="pills-suv-tab"
+        tabindex="0">
+        <div class="slide-content1 pt-5">
+          <div class="card-wrapper swiper-wrapper">
+            {% for prod in product %}
+            {% if prod.category == 'SUV' %}
+            <div class="card swiper-slide">
+              <div class="image-content">
+                <span class="overlay"></span>
+                <div class="card-image">
+                  <img src="{{prod.product_image.url}}" alt="Red" class="card-image">
+                </div>
+              </div>
+              <div class="card-content">
+                <p class="mlkpro">{{prod.car_name}}</p>
+                <p class="car_price">₹{{prod.selling_price}}lakh - ₹{{prod.present_price}}lakh/-</p>
+                <a href="{% url 'product-detail' prod.id %}">
+                  <button type="button" class="btn btn-know-more">Know More</button>
+                </a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-button-next swiper-nav-next-btn1"></div>
+        <div class="swiper-button-prev swiper-nav-prev-btn1"></div>
+      </div>
+      <div class="tab-pane fade" id="pills-hatchback" role="tabpanel" aria-labelledby="pills-hatchback-tab"
+        tabindex="0">
+        <div class="slide-content1 pt-5">
+          <div class="card-wrapper swiper-wrapper">
+            {% for prod in product %}
+            {% if prod.category == 'Hatchback' %}
+            <div class="card swiper-slide">
+              <div class="image-content">
+                <span class="overlay"></span>
+                <div class="card-image">
+                  <img src="{{prod.product_image.url}}" alt="Red" class="card-image">
+                </div>
+              </div>
+              <div class="card-content">
+                <p class="mlkpro">{{prod.car_name}}</p>
+                <p class="car_price">₹{{prod.selling_price}}lakh - ₹{{prod.present_price}}lakh/-</p>
+                <a href="{% url 'product-detail' prod.id %}">
+                  <button type="button" class="btn btn-know-more">Know More</button>
+                </a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-button-next swiper-nav-next-btn1"></div>
+        <div class="swiper-button-prev swiper-nav-prev-btn1"></div>
+      </div>
+      <div class="tab-pane fade" id="pills-sedan" role="tabpanel" aria-labelledby="pills-sedan-tab" tabindex="0">
+        <div class="slide-content1 pt-5">
+          <div class="card-wrapper swiper-wrapper">
+            {% for prod in product %}
+            {% if prod.category == 'Sedan' %}
+            <div class="card swiper-slide">
+              <div class="image-content">
+                <span class="overlay"></span>
+                <div class="card-image">
+                  <img src="{{prod.product_image.url}}" alt="Red" class="card-image">
+                </div>
+              </div>
+              <div class="card-content">
+                <p class="mlkpro">{{prod.car_name}}</p>
+                <p class="car_price">₹{{prod.selling_price}}lakh - ₹{{prod.present_price}}lakh/-</p>
+                <a href="{% url 'product-detail' prod.id %}">
+                  <button type="button" class="btn btn-know-more">Know More</button>
+                </a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-button-next swiper-nav-next-btn1"></div>
+        <div class="swiper-button-prev swiper-nav-prev-btn1"></div>
+      </div>
+      <div class="tab-pane fade" id="pills-muv" role="tabpanel" aria-labelledby="pills-muv-tab" tabindex="0">
+        <div class="slide-content1 pt-5">
+          <div class="card-wrapper swiper-wrapper">
+            {% for prod in product %}
+            {% if prod.category == 'MUV' %}
+            <div class="card swiper-slide">
+              <div class="image-content">
+                <span class="overlay"></span>
+                <div class="card-image">
+                  <img src="{{prod.product_image.url}}" alt="Red" class="card-image">
+                </div>
+              </div>
+              <div class="card-content">
+                <p class="mlkpro">{{prod.car_name}}</p>
+                <p class="car_price">₹{{prod.selling_price}}lakh - ₹{{prod.present_price}}lakh/-</p>
+                <a href="{% url 'product-detail' prod.id %}">
+                  <button type="button" class="btn btn-know-more">Know More</button>
+                </a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-button-next swiper-nav-next-btn1"></div>
+        <div class="swiper-button-prev swiper-nav-prev-btn1"></div>
+      </div>
+      <div class="tab-pane fade" id="pills-luxury" role="tabpanel" aria-labelledby="pills-luxury-tab" tabindex="0">
+        <div class="slide-content1 pt-5">
+          <div class="card-wrapper swiper-wrapper">
+            {% for prod in product %}
+            {% if prod.category == 'Luxury' %}
+            <div class="card swiper-slide">
+              <div class="image-content">
+                <span class="overlay"></span>
+                <div class="card-image">
+                  <img src="{{prod.product_image.url}}" alt="Red" class="card-image">
+                </div>
+              </div>
+              <div class="card-content">
+                <p class="mlkpro">{{prod.car_name}}</p>
+                <p class="car_price">₹{{prod.selling_price}}lakh - ₹{{prod.present_price}}lakh/-</p>
+                <a href="{% url 'product-detail' prod.id %}">
+                  <button type="button" class="btn btn-know-more">Know More</button>
+                </a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-button-next swiper-nav-next-btn1"></div>
+        <div class="swiper-button-prev swiper-nav-prev-btn1"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Car End -->
+<!-- Budjet Car Start -->
+<div class="car_body shadow-sm">
+  <div class="slide-container2 swiper">
+    <div class="wow fadeInUp snt" data-wow-delay="0.1s">
+      <h4 class="display-7 mt-3">Trusted used cars by budget</h4>
+      <ul class="nav nav-pills car_brand" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="pills-1lakh-tab" data-bs-toggle="pill" data-bs-target="#pills-1lakh"
+            type="button" role="tab" aria-controls="pills-1lakh" aria-selected="true">1-5 Lakh</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-5lakh-tab" data-bs-toggle="pill" data-bs-target="#pills-5lakh"
+            type="button" role="tab" aria-controls="pills-5lakh" aria-selected="false">5-10 Lakh</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-10lakh-tab" data-bs-toggle="pill" data-bs-target="#pills-10lakh"
+            type="button" role="tab" aria-controls="pills-10lakh" aria-selected="false">10-15 Lakh</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-15lakh-tab" data-bs-toggle="pill" data-bs-target="#pills-15lakh"
+            type="button" role="tab" aria-controls="pills-15lakh" aria-selected="false">15-20 Lakh</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-20lakh-tab" data-bs-toggle="pill" data-bs-target="#pills-20lakh"
+            type="button" role="tab" aria-controls="pills-20lakh" aria-selected="false">above 20 lakh</button>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-1lakh" role="tabpanel" aria-labelledby="pills-1lakh-tab"
+        tabindex="0">
+        <div class="slide-content2 pt-5">
+          <div class="card-wrapper swiper-wrapper">
+            {% for prod in product %}
+            {% if prod.selling_price >= 1 and prod.selling_price <= 5 or prod.present_price >= 1 and prod.present_price <= 5 %}
+            <div class="card swiper-slide">
+              <div class="image-content">
+                <span class="overlay"></span>
+                <div class="card-image">
+                  <img src="{{prod.product_image.url}}" alt="Red" class="card-image">
+                </div>
+              </div>
+              <div class="card-content">
+                <p class="mlkpro">{{prod.car_name}}</p>
+                <p class="car_price">₹{{prod.selling_price}}lakh - ₹{{prod.present_price}}lakh/-</p>
+                <a href="{% url 'product-detail' prod.id %}">
+                  <button type="button" class="btn btn-know-more">Know More</button>
+                </a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-button-next swiper-nav-next-btn2"></div>
+        <div class="swiper-button-prev swiper-nav-prev-btn2"></div>
+      </div>
+      <div class="tab-pane fade" id="pills-5lakh" role="tabpanel" aria-labelledby="pills-5lakh-tab" tabindex="0">
+        <div class="slide-content2 pt-5">
+          <div class="card-wrapper swiper-wrapper">
+            {% for prod in product %}
+            {% if prod.selling_price >= 5 and prod.selling_price <= 10 or prod.present_price >= 5 and prod.present_price <= 10 %}
+            <div class="card swiper-slide">
+              <div class="image-content">
+                <span class="overlay"></span>
+                <div class="card-image">
+                  <img src="{{prod.product_image.url}}" alt="Red" class="card-image">
+                </div>
+              </div>
+              <div class="card-content">
+                <p class="mlkpro">{{prod.car_name}}</p>
+                <p class="car_price">₹{{prod.selling_price}}lakh - ₹{{prod.present_price}}lakh/-</p>
+                <a href="{% url 'product-detail' prod.id %}">
+                  <button type="button" class="btn btn-know-more">Know More</button>
+                </a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-button-next swiper-nav-next-btn2"></div>
+        <div class="swiper-button-prev swiper-nav-prev-btn2"></div>
+      </div>
+      <div class="tab-pane fade" id="pills-10lakh" role="tabpanel" aria-labelledby="pills-10lakh-tab" tabindex="0">
+        <div class="slide-content2 pt-5">
+          <div class="card-wrapper swiper-wrapper">
+            {% for prod in product %}
+            {% if prod.selling_price >= 10 and prod.selling_price <= 15 or prod.present_price >= 10 and prod.present_price <= 15 %}
+            <div class="card swiper-slide">
+              <div class="image-content">
+                <span class="overlay"></span>
+                <div class="card-image">
+                  <img src="{{prod.product_image.url}}" alt="Red" class="card-image">
+                </div>
+              </div>
+              <div class="card-content">
+                <p class="mlkpro">{{prod.car_name}}</p>
+                <p class="car_price">₹{{prod.selling_price}}lakh - ₹{{prod.present_price}}lakh/-</p>
+                <a href="{% url 'product-detail' prod.id %}">
+                  <button type="button" class="btn btn-know-more">Know More</button>
+                </a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-button-next swiper-nav-next-btn2"></div>
+        <div class="swiper-button-prev swiper-nav-prev-btn2"></div>
+      </div>
+      <div class="tab-pane fade" id="pills-15lakh" role="tabpanel" aria-labelledby="pills-15lakh-tab" tabindex="0">
+        <div class="slide-content2 pt-5">
+          <div class="card-wrapper swiper-wrapper">
+            {% for prod in product %}
+            {% if prod.selling_price >= 15 and prod.selling_price <= 20 or prod.present_price >= 15 and prod.present_price <= 20 %}
+            <div class="card swiper-slide">
+              <div class="image-content">
+                <span class="overlay"></span>
+                <div class="card-image">
+                  <img src="{{prod.product_image.url}}" alt="Red" class="card-image">
+                </div>
+              </div>
+              <div class="card-content">
+                <p class="mlkpro">{{prod.car_name}}</p>
+                <p class="car_price">₹{{prod.selling_price}}lakh - ₹{{prod.present_price}}lakh/-</p>
+                <a href="{% url 'product-detail' prod.id %}">
+                  <button type="button" class="btn btn-know-more">Know More</button>
+                </a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-button-next swiper-nav-next-btn2"></div>
+        <div class="swiper-button-prev swiper-nav-prev-btn2"></div>
+      </div>
+      <div class="tab-pane fade" id="pills-20lakh" role="tabpanel" aria-labelledby="pills-20lakh-tab" tabindex="0">
+        <div class="slide-content2 pt-5">
+          <div class="card-wrapper swiper-wrapper">
+            {% for prod in product %}
+            {% if prod.selling_price >= 20 or prod.present_price >= 20 %}
+            <div class="card swiper-slide">
+              <div class="image-content">
+                <span class="overlay"></span>
+                <div class="card-image">
+                  <img src="{{prod.product_image.url}}" alt="Red" class="card-image">
+                </div>
+              </div>
+              <div class="card-content">
+                <p class="mlkpro">{{prod.car_name}}</p>
+                <p class="car_price">₹{{prod.selling_price}}lakh - ₹{{prod.present_price}}lakh/-</p>
+                <a href="{% url 'product-detail' prod.id %}">
+                  <button type="button" class="btn btn-know-more">Know More</button>
+                </a>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-button-next swiper-nav-next-btn2"></div>
+        <div class="swiper-button-prev swiper-nav-prev-btn2"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Budjet Car End -->
+<!-- Popular Brands Start -->
+<div class="car_body shadow-sm">
+  <div class="slide-container3 swiper">
+    <div class="wow fadeInUp p-3" data-wow-delay="0.1s">
+      <h4 class="display-7 mt-3">Popular Brands</h4>
+    </div>
+    <div class="slide-content3">
+      <div class="card-wrapper swiper-wrapper">
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+              <a href="{% url 'brand' 'TATA' %}">
+              <img src="{% static 'app/images/Brands/image.png' %}" alt="Red" class="card-image">
+            </a>
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+              <a href="{% url 'brand' 'Toyota' %}">
+              <img src="{% static 'app/images/Brands/image2.png' %}" alt="Red" class="card-image">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+              <a href="{% url 'brand' 'Hyundai' %}">
+              <img src="{% static 'app/images/Brands/image3.png' %}" alt="Red" class="card-image">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+              <a href="{% url 'brand' 'Gundai' %}">
+              <img src="{% static 'app/images/Brands/image4.png' %}" alt="Red" class="card-image">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+              <a href="{% url 'brand' 'Pundai' %}">
+              <img src="{% static 'app/images/Brands/image5.png' %}" alt="Red" class="card-image">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+              <a href="{% url 'brand' 'TATA' %}">
+              <img src="{% static 'app/images/Brands/image6.png' %}" alt="Red" class="card-image">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+              <a href="{% url 'brand' 'Toyota' %}">
+              <img src="{% static 'app/images/Brands/image7.png' %}" alt="Red" class="card-image">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+              <a href="{% url 'brand' 'Hyundai' %}">
+              <img src="{% static 'app/images/Brands/image8.png' %}" alt="Red" class="card-image">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+              <a href="{% url 'brand' 'Gundai' %}">
+              <img src="{% static 'app/images/Brands/image9.png' %}" alt="Red" class="card-image">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+              <a href="{% url 'brand' 'Pundai' %}">
+              <img src="{% static 'app/images/Brands/image10.png' %}" alt="Red" class="card-image">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+              <a href="{% url 'brand' 'TATA' %}">
+              <img src="{% static 'app/images/Brands/image11.png' %}" alt="Red" class="card-image">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+              <a href="{% url 'brand' 'Toyota' %}">
+              <img src="{% static 'app/images/Brands/image12.png' %}" alt="Red" class="card-image">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+              <a href="{% url 'brand' 'Hyundai' %}">
+              <img src="{% static 'app/images/Brands/image13.png' %}" alt="Red" class="card-image">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-next swiper-nav-next-btn3"></div>
+    <div class="swiper-button-prev swiper-nav-prev-btn3"></div>
+  </div>
+</div>
+<!-- Popular Brands End-->
+
+
+<div class="container">
+  <h2>The most Popular cars</h2>
+  <div class="row container">
+    <div class="col-md-4 col-sm-4 mi-go wow fadeInUp mb-5 shadow-sm py-3" data-wow-duration="1s" data-wow-delay="0.6s">
+      <div class="goodnesssec buttermilk">
+        <div class="goodnessseccont">
+          <img src="{% static 'app/images/Black.jpg' %}" alt="buffalo-SVee" class="img-responsive center-block" />
+          <p class="mlkpro">Black Car</p>
+          <p class="car_price">₹5.50 lakh - ₹9.29 lakh</p>
+          <a href="{% url 'category' 'SV' %}">
+            <button type="button" class="btn btn-info text-liSVt w-75 mx-5 mt-3">Know More</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-4 mi-go wow fadeInUp mb-5 shadow-sm py-3" data-wow-duration="1s" data-wow-delay="0.6s">
+      <div class="goodnesssec buttermilk">
+        <div class="goodnessseccont">
+          <img src="{% static 'app/images/Silver.jpg' %}" alt="buffalo-SVee" class="img-responsive center-block" />
+          <p class="mlkpro">Black Car</p>
+          <p class="car_price">₹5.50 lakh - ₹9.29 lakh</p>
+          <a href="{% url 'category' 'SV' %}">
+            <button type="button" class="btn btn-info text-liSVt w-75 mx-5 mt-3">Know More</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-4 mi-go wow fadeInUp mb-5 shadow-sm py-3" data-wow-duration="1s" data-wow-delay="0.6s">
+      <div class="goodnesssec buttermilk">
+        <div class="goodnessseccont">
+          <img src="{% static 'app/images/White.jpg' %}" alt="buffalo-SVee" class="img-responsive center-block" />
+          <p class="mlkpro">Black Car</p>
+          <p class="car_price">₹5.50 lakh - ₹9.29 lakh</p>
+          <a href="{% url 'category' 'SV' %}">
+            <button type="button" class="btn btn-info text-liSVt w-75 mx-5 mt-3">Know More</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-4 mi-go wow fadeInUp mb-5 shadow-sm py-3" data-wow-duration="1s" data-wow-delay="0.6s">
+      <div class="goodnesssec buttermilk">
+        <div class="goodnessseccont">
+          <img src="{% static 'app/images/Yellow.jpg' %}" alt="buffalo-SVee" class="img-responsive center-block" />
+          <p class="mlkpro">Black Car</p>
+          <p class="car_price">₹5.50 lakh - ₹9.29 lakh</p>
+          <a href="{% url 'category' 'SV' %}">
+            <button type="button" class="btn btn-info text-liSVt w-75 mx-5 mt-3">Know More</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-4 mi-go wow fadeInUp mb-5 shadow-sm py-3" data-wow-duration="1s" data-wow-delay="0.6s">
+      <div class="goodnesssec buttermilk">
+        <div class="goodnessseccont">
+          <img src="{% static 'app/images/Cyan.jpg' %}" alt="buffalo-SVee" class="img-responsive center-block" />
+          <p class="mlkpro">Black Car</p>
+          <p class="car_price">₹5.50 lakh - ₹9.29 lakh</p>
+          <a href="{% url 'category' 'SUV' %}">
+            <button type="button" class="btn btn-info text-liSVt w-75 mx-5 mt-3">Know More</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-4 mi-go wow fadeInUp mb-5 shadow-sm py-3" data-wow-duration="1s" data-wow-delay="0.6s">
+      <div class="goodnesssec buttermilk">
+        <div class="goodnessseccont">
+          <img src="{% static 'app/images/glanza-1.jpeg' %}" alt="buffalo-SVee" class="img-responsive center-block" />
+          <p class="mlkpro">Glanza</p>
+          <p class="car_price">₹5.50 lakh - ₹9.29 lakh</p>
+          <a href="{% url 'category' 'SUV' %}">
+            <button type="button" class="btn btn-info text-liSVt w-75 mx-5 mt-3">Know More</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main-content %}

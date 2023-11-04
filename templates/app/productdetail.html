@@ -1,0 +1,120 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}
+Title
+{% endblock %}
+{% block main-content %}
+<div class="container top-space">
+  <div class="row flex justify-content-evenly">
+    <div class="col-lg-6">
+      <div class="main_heading">
+        <h3>{{ product.car_brand }} {{ product.car_model }} {{ product.car_name }} Images</h3>
+      </div>
+      <div class="car_body2">
+        <div class="slide-container4 swiper">
+          <div class="wow fadeInUp" data-wow-delay="0.1s">
+          </div>
+          <div class="slide-content4" id="fullscreen">
+            <div class="card-wrapper swiper-wrapper">
+              <div class="card swiper-slide">
+                <div class="image-content">
+                  <span class="overlay"></span>
+                  <div class="card-image">
+                    <img src="{{ product.product_image1.url }}" alt="product_image" class="w-100"/>
+                  </div>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="image-content">
+                  <span class="overlay"></span>
+                  <div class="card-image">
+                    <img src="{{ product.product_image2.url }}" alt="product_image" class="w-100" />
+                  </div>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="image-content">
+                  <span class="overlay"></span>
+                  <div class="card-image">
+                    <img src="{{ product.product_image3.url }}" alt="product_image" class="w-100"/>
+                  </div>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="image-content">
+                  <span class="overlay"></span>
+                  <div class="card-image">
+                    <img src="{{ product.product_image4.url }}" alt="product_image" class="w-100"/>
+                  </div>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="image-content">
+                  <span class="overlay"></span>
+                  <div class="card-image">
+                    <img src="{{ product.product_image5.url }}" alt="product_image" class="w-100"/>
+                  </div>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="image-content">
+                  <span class="overlay"></span>
+                  <div class="card-image">
+                    <img src="{{ product.product_image6.url }}" alt="product_image" class="w-100"/>
+                  </div>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="image-content">
+                  <span class="overlay"></span>
+                  <div class="card-image">
+                    <img src="{{ product.product_image7.url }}" alt="product_image" class="w-100"/>
+                  </div>
+                </div>
+              </div>
+              <div class="card swiper-slide">
+                <div class="image-content">
+                  <span class="overlay"></span>
+                  <div class="card-image">
+                    <img src="{{ product.product_image8.url }}" alt="product_image" class="w-100"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-prev swiper-nav-prev-btn4"></div>
+          <div class="swiper-button-next swiper-nav-next-btn4"></div>
+        </div>
+      </div>
+    </div>
+    <div class="productdetail col-lg-4">
+      <div class="main_heading">
+        <h4>Car Details</h4>
+      </div>
+      <ul class="fs-5" style="font-family: Rajdhani; list-style: none;">
+        <li><b>Name:</b> {{ product.car_name }}</li>
+        <li><b>Price:</b> ₹{{product.selling_price}}lakh - ₹{{product.present_price}}lakh/-</li>
+        <li><b>Category:</b> {{ product.category }}</li>
+        <li><b>Brand:</b> {{ product.car_brand }}</li>
+        <li><b>Model:</b> {{ product.car_model }}</li>
+        <li><b>Year:</b> {{ product.year }}</li>
+        <li><b>Fuel Type:</b> {{ product.fuel_type }}</li>
+        <li><b>Kilometers Driven:</b> {{ product.kms_driven }}</li>
+        <li><b>Seller Type:</b> {{ product.seller_type }}</li>
+        <li><b>Transmission Mode:</b> {{ product.transmission }}</li>
+      </ul>
+      {% if wishlist %}
+      <a pid={{product.id}} class="minus-wishlist btn btn-danger shadow px-5 py-2 ms-4"><i
+          class="fas fa-heart fa-lg"></i></a>
+      {% else %}
+      <a pid={{product.id}} class="plus-wishlist btn btn-success shadow px-5 py-2 ms-4"><i
+          class="fas fa-heart fa-lg"></i></a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="main_heading">
+    <h3>Description:</h3>
+  </div>
+  <p>{{product.description}}</p>
+</div>
+{% endblock main-content %}

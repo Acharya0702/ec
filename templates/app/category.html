@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}
+Title
+{% endblock %}
+{% block main-content %}
+<div class="container">
+  <div class="row top-space">
+    <h3>{{val}} Cars List</h3>
+  </div>
+  <div class="row container">
+    {% for prod in product %}
+    <div class="col-lg-3 col-md-4 col-sm-6 mi-go wow fadeInUp mb-5" data-wow-duration="1s" data-wow-delay="0.6s">
+      <div class="goodnesssec buttermilk">
+        <div class="goodnessseccont">
+          <img src="{{prod.product_image.url}}" alt="buffalo-SVee" class="img-responsive center-block" />
+          <p class="mlkpro">{{prod.car_name}}</p>
+          <p class="car_price">₹{{prod.selling_price}}lakh - ₹{{prod.present_price}}lakh/-</p>
+          <div class="goodnessseccont text-center">
+            <a href="{% url 'product-detail' prod.id %}">
+              <button type="button" class="btn btn-know-more w-50">Know More</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock main-content %}

@@ -1,0 +1,41 @@
+.main-header{
+    background: linear-gradient(135deg, rgb(76, 21, 94) 80%, rgb(93, 14, 69) 20%);
+}
+.nav-link{
+    color: white;
+    font-weight: bold;
+}
+.nav-link p{
+    color: white;
+    font-weight: bold;
+}
+
+.nav-header{
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+    width: 80%;
+    margin: 0 1rem;
+    text-align: center;
+}
+.brand-text{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+    padding:0 0.3rem;
+    color: aliceblue;
+}
+.main-sidebar{
+    border: 1px solid black;
+    background: linear-gradient(rgb(76, 21, 94), rgb(93, 14, 69));
+}
+.info a{
+    color: aliceblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+.card-header{
+    background: linear-gradient(rgb(76, 21, 94), rgb(93, 14, 69));
+}
+.card-title{
+    color: aliceblue;
+}
