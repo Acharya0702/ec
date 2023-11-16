@@ -152,7 +152,6 @@ def show_wishlist(request):
         product = Wishlist.objects.filter(user=user)
     return render(request, 'app/wishlist.html', locals())
 
-@login_required
 def plus_wishlist(request):
     if request.method == 'GET':
         prod_id = request.GET['prod_id']
@@ -164,7 +163,6 @@ def plus_wishlist(request):
         }
         return JsonResponse(data)
 
-@login_required
 def minus_wishlist(request):
     if request.method == 'GET':
         prod_id = request.GET['prod_id']
