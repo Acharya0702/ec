@@ -103,12 +103,19 @@ Title
         <li><b>Seller Type:</b> {{ product.seller_type }}</li>
         <li><b>Transmission Mode:</b> {{ product.transmission }}</li>
       </ul>
+      {% if request.user.is_authenticated %}
       {% if wishlist %}
       <a pid={{product.id}} class="minus-wishlist btn btn-danger shadow px-5 py-2 ms-4"><i
           class="fas fa-heart fa-lg"></i></a>
       {% else %}
       <a pid={{product.id}} class="plus-wishlist btn btn-success shadow px-5 py-2 ms-4"><i
           class="fas fa-heart fa-lg"></i></a>
+      {% endif %}
+      {% else %}
+      <div class="text-center">
+        <p>Click Here for <b>login</b> to add this product as your <b>wishlist.</b></p>
+        <a class="text-dark btn btn-danger" href="{% url 'login' %}"><i class="fa fa-sign-in-alt" aria-hidden="true"></i> Login</a>
+      </div>
       {% endif %}
     </div>
   </div>
